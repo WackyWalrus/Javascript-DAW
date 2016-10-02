@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>DAW</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<canvas id="canvas"></canvas>
+			<div class="header">
+				<div class="piano">
+					<div class="white-key" data-steps="-9">C</div>
+					<div class="black-key" data-steps="-8"></div>
+					<div class="white-key" data-steps="-7">D</div>
+					<div class="black-key" data-steps="-6"></div>
+					<div class="white-key" data-steps="-5">E</div>
+					<div class="white-key" data-steps="-4">F</div>
+					<div class="black-key" data-steps="-3"></div>
+					<div class="white-key" data-steps="-2">G</div>
+					<div class="black-key" data-steps="-1"></div>
+					<div class="white-key" data-steps="0">A</div>
+					<div class="black-key" data-steps="1"></div>
+					<div class="white-key" data-steps="2">B</div>
+					<div class="white-key" data-steps="3">C</div>
+					<div class="black-key" data-steps="4"></div>
+					<div class="white-key" data-steps="5">D</div>
+					<div class="black-key" data-steps="6"></div>
+					<div class="white-key" data-steps="7">E</div>
+					<div class="white-key" data-steps="8">F</div>
+				</div>
+				<input type="text" placeholder="Click here to change track title" id="title" />
+				<button onclick="play();"><i class="fa fa-play" aria-hidden="true"></i></button>
+				<button onclick="stop();"><i class="fa fa-pause" aria-hidden="true"></i></button>
+				<button onclick="play(true);"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+			</div>
+			<div class="instruments">
+				<button id="add-instrument" onclick="addInstrument();">&plus; Instrument</button>
+			</div>
+			<div class="workstation">
+				<div class="needle"></div>
+				<div class="time-key">
+					<div class="measure"></div>
+				</div>
+				<button class="add-measure" onclick="addMeasure();">&plus;</button>
+				<div class="sheet">
+					<div class="mouse"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+		<script type="text/javascript" src="scripts.js"></script>
+	</body>
+</html>

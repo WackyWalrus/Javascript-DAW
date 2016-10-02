@@ -1,0 +1,269 @@
+html,
+body {
+	margin: 0;
+	padding: 5px;
+	font-family: 'sans-serif';
+	overflow-x: scroll;
+}
+
+canvas {
+	width: 1px;
+	height: 1px;
+	display: none;
+}
+
+#wrapper {
+	position: relative;
+}
+
+.header {
+	overflow: auto;
+	margin-bottom: 20px;
+	background-color: #EFEFEF;
+}
+
+.piano {
+	overflow: auto;
+	float: left;
+	margin-right: 20px;
+}
+.piano .white-key {
+	float: left;
+	width: 10px;
+	height: 15px;
+	border: 1px solid #000000;
+	font-size: 10px;
+	padding-top: 25px;
+	text-align: center;
+	background-color: #FFFFFF;
+}
+.piano .black-key {
+	float: left;
+	width: 10px;
+	height: 22px;
+	background-color: #000000;
+	margin-left: -6px;
+	margin-right: -5px;
+	position: relative;
+	z-index: 2;
+}
+.piano .white-key + .white-key {
+	margin-left: -1px;
+}
+.piano .black-key + .white-key {
+	margin-left: -1px;
+}
+.piano .playing {
+	background-color: #00B908;
+}
+
+#title {
+	float: left;
+	border: 0;
+	height: 40px;
+	font-size: 20px;
+	background-color: transparent;
+}
+
+.header button {
+	float: left;
+	margin-top: 6px;
+	margin-right: 6px;
+}
+
+.instruments {
+	width: 123px;
+	float: left;
+	margin-right: 20px;
+}
+
+#add-instrument {
+	margin-bottom: 20px;
+}
+
+.instruments .instrument {
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border: 1px solid #E0E0E0;
+	margin-bottom: 2px;
+	border-radius: 2px;
+	position: relative;
+}
+.instruments .instrument.selected {
+	border: 1px solid #000000;
+}
+.instruments .instrument.selected .tab {
+	background-color: #000000;
+}
+.instruments .instrument input[type="text"] {
+	border: 0;
+	width: 90%;
+	max-width: 100%;
+	text-align: center;
+	background-color: transparent;
+	cursor: default;
+	color: #E0E0E0;
+}
+.instruments .instrument.selected input[type="text"] {
+	color: #000000;
+}
+.instruments .instrument input[type="text"][disabled="disabled"] {
+	background-color: transparent;
+}
+.instruments .instrument .tab {
+	width: auto;
+	height: 2px;
+	background-color: #E0E0E0;
+}
+.instruments .instrument .piano-roll {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 10px;
+	border-left: 1px solid #E0E0E0;
+	border-top: 1px solid #E0E0E0;
+}
+.instruments .instrument.selected .piano-roll {
+	border-left: 1px solid #000000;
+	border-top: 1px solid #000000;
+}
+.instruments .instrument .piano-roll ._note {
+	width: 100%;
+	height: 4px;
+	border-bottom: 1px solid #E0E0E0;
+	font-size: 6px;
+	line-height: 6px;
+}
+.instruments .instrument.selected .piano-roll ._note {
+	border-bottom: 1px solid #000000;
+}
+.instruments .instrument .select-type {
+	background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #000000;
+    border-radius: 2px;
+    font-size: 8px;
+    left: 0;
+    outline: medium none;
+    padding: 0;
+    position: absolute;
+    top: 2px;
+    width: 42px;
+}
+.instruments .instrument .scale-up,
+.instruments .instrument .scale-down {
+	position: absolute;
+	right: 12px;
+	font-size: 12px;
+	cursor: pointer;
+	line-height: 0;
+}
+.instruments .instrument .scale-up {
+	top: 7px;
+}
+.instruments .instrument .scale-down {
+	bottom: 7px;
+}
+.workstation {
+	float: left;
+	position: relative;
+}
+.workstation .needle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	background-color: #00B908;
+	left: -3px;
+}
+.workstation .needle::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: -5.5px;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #00B908;
+}
+.workstation .time-key {
+	margin-bottom: 20px;
+	height: 30px;
+}
+.workstation .time-key .measure {
+	width: 100px;
+	height: 30px;
+	border-right: 1px solid #000;
+	position: relative;
+	float: left;
+}
+.workstation .time-key .measure::before,
+.workstation .time-key .measure::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 25px;
+	height: 30px;
+}
+.workstation .time-key .measure::before {
+	left: 25px;
+	border-left: 1px solid #E2E2E2;
+	border-right: 1px solid #E2E2E2;
+}
+.workstation .time-key .measure::after {
+	left: 50px;
+	border-right: 1px solid #E2E2E2;
+}
+.workstation .add-measure {
+	position: absolute;
+	right: -50px;
+	top: 0;
+}
+.workstation .sheet {
+	position: relative;
+}
+.workstation .sheet .instrument {
+	height: 40px;
+	margin-bottom: 4px;
+}
+.workstation .sheet .instrument .measure {
+	width: 100px;
+	height: 100%;
+	border: 1px solid #000000;
+	border-left: none;
+	position: relative;
+	float: left;
+}
+.workstation .sheet .instrument .measure::before,
+.workstation .sheet .instrument .measure::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 25px;
+}
+.workstation .sheet .instrument .measure::before {
+	left: 25px;
+	border-left: 1px solid #E2E2E2;
+	border-right: 1px solid #E2E2E2;
+}
+.workstation .sheet .instrument .measure::after {
+	left: 50px;
+	border-right: 1px solid #E2E2E2;
+}
+.workstation .sheet .mouse,
+.workstation .sheet .note {
+	position: absolute;
+}
+.workstation .sheet .mouse.active,
+.workstation .sheet .note {
+	height: 4px;
+	width: 25px;
+	background-color: #00B908;
+}
+.workstation .sheet .note {
+	z-index: 9;
+}
